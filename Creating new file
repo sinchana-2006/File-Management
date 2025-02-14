@@ -1,0 +1,35 @@
+import os # Importing the 'os' module for interacting with the operating system
+import shutil # Import the 'shutil' module for file and directory operations
+
+# Function to create a new directory
+def create_directory(path):
+  os.makedirs(path, exist_ok = True)  # os.makedirs is used to create a directory
+  print(f'Directory {path} created successfully')
+
+# Function to create a new file and write data to it
+def create_file(file_path, data):
+  with open(file_path, "w") as file:
+    file.write(data)
+  print(f"File '{file_path}' created and data written successfully")
+
+# Function to copy file from one location to another
+def copy_file(source, destination):
+  shutil.copy(source, destination)
+  print(f"File {source} copied to {destination} successfully")
+
+# Main Block of the program
+if __name__ == '__main__':
+  # Define the path of the new directory
+  dir_path = "example_dir"
+  # Call the function to create the directory
+  create_directory(dir_path)
+
+  # Define the file path within the newly created directory
+  file_path = os.path.join(dir_path, "example.txt")
+  # Call the function to create a new file and write data to it
+  create_file(file_path,"Hello, Operaing System")
+
+  # Define the destination path for the copied file
+  copied_file_path = os.path.join(dir_path, "copy_example.txt")
+  # Call the function to copy the original file to the new location
+  copy_file(file_path, copied_file_path)
